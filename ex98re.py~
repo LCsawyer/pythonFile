@@ -1,0 +1,20 @@
+# -*- coding: UTF-8 -*-
+
+import re
+
+line = "cats are smarter than dogs"
+
+#matchoj = re.match('(.+) are (.*?) dogs',line) #match()中的第一个参数表示匹配模式
+matchoj = re.match('.*?',line) #本例中其实它就是匹配了一整个字串，然后将字符串拆分
+#matchoj = re.match('...',line)  #‘（）’表示分组，‘.’表示匹配除\n外的所有字符,一个就代表匹配一个字符
+print matchoj.group()         #‘*’代表重复前面字符0-无穷次，‘+’是1-无穷，‘？’代表非贪婪模式
+                              #例如‘.*a’代表一直匹配到a字符之前，如果没有‘a’这个断点，那么‘.*’就会
+                              #匹配整个字符串，而‘.*’
+
+'''                           
+line = 'abbbc'
+matchoj = re.match('ab*',line)
+matchoj2 = re.match('ab*?',line)
+print matchoj.group()
+print matchoj2.group()
+'''

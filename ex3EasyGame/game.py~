@@ -1,0 +1,42 @@
+# -*- coding: UTF-8 -*-
+from sys import exit
+import easy
+import hard
+import medium
+
+class Game(object) :
+	def play(self):
+		in_put = getattr(self,'pattern')()
+		if in_put == 'easy':
+			room = easy.easy()
+		elif in_put == 'medium':
+			room = medium.medium()
+		else :
+			room = hard.hard()
+		next = room.run_game()
+		getattr(self,next)()
+		
+	def pattern(self):
+		print "you should choice the pattern"
+		print "a easy , b medium , c hard"
+		pa_chioce = raw_input('chioce>')
+		if pa_chioce == 'a':
+			return 'easy'
+		elif pa_chioce == 'b':
+			return 'medium'
+		elif pa_chioce == 'c':
+			return 'hard'
+		else :
+			exit(0)
+
+	def death(self):
+		print "no you deaded"
+		exit(1)
+	def out_put(self):
+		print "you win!"
+		exit(0)
+
+pt = Game()
+print easy.__name__
+pt.play()
+
