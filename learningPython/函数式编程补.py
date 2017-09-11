@@ -22,14 +22,14 @@ print f1(),f2(),f3()  #结果与期待的不同，因为函数并不会立即执
 f = lambda x: x * x
 print f(5)
 '''
-#任何函数都可以通过func(*args,**fw)的形式调用，无论它的参数是怎样的
+#任何函数都可以通过func(*args,**fw)的形式调用，无论它的参数是怎样的(不准确，详见python使用手册小记)
 #装饰器decorator,用于对函数进行补充但是又不对原函数重新定义
 '''
 def log(func):
 	@functools.wraps(func)
 	def wrapper(*ars,**kw):      #使用可变参数，以传入原函数传入的参数
 		print "call %s():"%func.__name__
-		func(*ars,**kw)   #执行被装饰函数的原功能
+		func(*ars,**kw)   #执行被装饰函数的原功能，将可变参数解散，使其匹配原函数的传值方式
 		
 	return wrapper
 @log
