@@ -1,0 +1,14 @@
+1 有关urllib urllib2包的知识点：
+a urllib可以使用urlencode()方法可以将字典中的值转换成可post和get的形式。
+b urllib和urllib2都有urlopen()方法，但是urllib.urlopen()只能接收网址字串无法传入request，而urllib2还有
+Request对象可以设置多种属性(例如headers)保证所请求服务器的响应。
+c 例：url = 'https://www.baidu.com/login'
+      values = {'username':'xxxx','password':'xxxxxx'}
+      data = urllib.urlencode(values)
+      headers = {'User-Agent':'xxxxx'}
+      request = urllib2.Request(url,data,headers) #使用post提交登录
+      response = urllib2.urlopen(request) #打开网页源码
+
+2 有关accell和UTF-8间的转换问题，如何将汉字写入文本等：
+a str对象的decode(被解码)方法是将其它编码转换成python的unicode，encode(解码为)方法反过来。
+b ubuntu终端默认是utf-8编码
